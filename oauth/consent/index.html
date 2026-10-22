@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10131c">
+<meta name="description" content="Autorize com segurança o acesso à sua identidade RangelLab."><title>Autorizar acesso — RangelLab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#10131c;--panel:#171b27;--line:rgba(255,255,255,.1);--muted:#a3abc0;--text:#f5f7ff;--violet:#20cdb4;--mint:#75e4c1}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#159cf41c,transparent 34rem),var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;display:grid;place-items:center;padding:24px}
+a{color:#7eead4}.wrap{width:min(100%,520px)}.brand{display:flex;justify-content:center;align-items:center;gap:10px;text-decoration:none;font:700 1.3rem "Space Grotesk",sans-serif;margin-bottom:26px;letter-spacing:-.05em}.mark{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;background:transparent}.mark svg{display:block;width:100%;height:100%}
+.panel{border:1px solid var(--line);border-radius:24px;padding:28px;background:#171b27ef;box-shadow:0 24px 80px #0004}.eyebrow{text-transform:uppercase;letter-spacing:.1em;font-size:.73rem;font-weight:700;color:#c9baff}h1{font:600 2rem "Space Grotesk",sans-serif;letter-spacing:-.05em;margin:10px 0}p{color:var(--muted);line-height:1.65;font-size:.93rem}.details{margin:22px 0;padding:18px;border:1px solid var(--line);border-radius:14px;background:#10131c}.detail{margin:0 0 13px;overflow-wrap:anywhere}.detail:last-child{margin-bottom:0}.detail strong{display:block;color:var(--text);font-size:.83rem;margin-bottom:5px}.scopes{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}.scopes li{border:1px solid #a78bfa55;background:#a78bfa12;border-radius:999px;padding:6px 10px;font-size:.82rem}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}.button{border:0;border-radius:11px;padding:13px 15px;font:700 .94rem "DM Sans",sans-serif;cursor:pointer}.approve{background:#f5f4ff;color:#171522}.deny{border:1px solid var(--line);background:transparent;color:var(--text)}.button:disabled{opacity:.55;cursor:wait}.message{display:none;margin-top:16px;padding:12px;border:1px solid var(--line);border-radius:11px;font-size:.88rem;line-height:1.55;overflow-wrap:anywhere}.message.show{display:block}.message.error{border-color:#f8717180;color:#fecaca}.foot{text-align:center;font-size:.83rem;margin-top:18px}.foot a{text-decoration:none}[hidden]{display:none!important}@media(max-width:420px){.panel{padding:22px}.actions{grid-template-columns:1fr}h1{font-size:1.8rem}}
+</style></head>
+<body><main class="wrap">
+<a class="brand" href="https://rangellab.github.io/" aria-label="RangelLab início"><span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rl-ring" x1="5" y1="8" x2="59" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#00B4E6"/><stop offset="1" stop-color="#00D1A7"/></linearGradient></defs><circle cx="32" cy="32" r="28" fill="#07111f" stroke="url(#rl-ring)" stroke-width="3"/><text x="23" y="42" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="800" text-anchor="middle" fill="#F5F7FF">R</text><text x="40" y="42" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="800" text-anchor="middle" fill="#20E0B9">L</text></svg></span><span>RangelLab</span></a>
+<section class="panel" aria-labelledby="title"><span class="eyebrow">Autorização segura</span><h1 id="title">Confirme o acesso</h1>
+<p id="intro">Um aplicativo está solicitando acesso à sua identidade RangelLab. Confira os detalhes antes de continuar.</p>
+<div id="details" class="details" hidden>
+<p class="detail"><strong>Aplicativo</strong><span id="client-name">—</span></p>
+<p class="detail" id="client-uri-wrap" hidden><strong>Site do aplicativo</strong><span id="client-uri">—</span></p>
+<p class="detail"><strong>Conta RangelLab</strong><span id="account">Conta conectada</span></p>
+<p class="detail"><strong>Endereço de retorno registrado</strong><span id="redirect-uri">—</span></p>
+<div class="detail"><strong>Permissões solicitadas</strong><ul id="scopes" class="scopes"></ul></div></div>
+<div id="message" class="message show" role="status" aria-live="polite">Verificando a solicitação de autorização…</div>
+<div id="actions" class="actions" hidden><button id="deny" class="button deny" type="button">Não autorizar</button><button id="approve" class="button approve" type="button">Autorizar acesso</button></div>
+</section><p class="foot"><a href="https://rangellab.github.io/">Voltar ao portal RangelLab</a></p></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/auth-config.js"></script>
+<script>
+(() => {
+ const params=new URLSearchParams(location.search), authorizationId=params.get("authorization_id");
+ const message=document.querySelector("#message"), detailsBox=document.querySelector("#details"), actions=document.querySelector("#actions");
+ const approve=document.querySelector("#approve"), deny=document.querySelector("#deny"); let supabase;
+ function showMessage(text,type=""){message.textContent=text;message.className="message show"+(type?" "+type:"");}
+ function setBusy(busy){approve.disabled=busy;deny.disabled=busy;}
+ function safeText(value){return typeof value==="string"&&value.trim()?value:"Não informado";}
+ async function init(){
+  if(!authorizationId||authorizationId.length>512){showMessage("Esta página precisa ser aberta pelo fluxo de autorização. O identificador authorization_id não foi encontrado.","error");return;}
+  const config=window.JSLYNK_AUTH_CONFIG||{};
+  if(!window.supabase||!config.url||!config.publishableKey){showMessage("Não foi possível carregar a configuração pública de autenticação do RangelLab.","error");return;}
+  supabase=window.supabase.createClient(config.url,config.publishableKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+  const {data:sessionData,error:sessionError}=await supabase.auth.getSession();if(sessionError)throw sessionError;
+  if(!sessionData.session){const returnTo="/oauth/consent/?authorization_id="+encodeURIComponent(authorizationId);location.replace("/auth.html?returnTo="+encodeURIComponent(returnTo));return;}
+  const {data,error}=await supabase.auth.oauth.getAuthorizationDetails(authorizationId);if(error)throw error;
+  if(!data)throw new Error("O servidor não retornou os detalhes da autorização.");
+  if(!("authorization_id" in data)){if(data.redirect_url)location.replace(data.redirect_url);else throw new Error("O servidor não retornou um endereço de redirecionamento válido.");return;}
+  document.querySelector("#client-name").textContent=safeText(data.client&&data.client.name);
+  const clientUri=data.client&&data.client.uri;if(clientUri){document.querySelector("#client-uri").textContent=clientUri;document.querySelector("#client-uri-wrap").hidden=false;}
+  document.querySelector("#account").textContent=safeText(data.user&&data.user.email);
+  document.querySelector("#redirect-uri").textContent=safeText(data.redirect_uri);
+  const scopeNames=(typeof data.scope==="string"?data.scope:"").split(/\s+/).filter(Boolean),scopes=document.querySelector("#scopes");scopes.replaceChildren();
+  (scopeNames.length?scopeNames:["Nenhuma permissão especificada"]).forEach(scope=>{const item=document.createElement("li");item.textContent=scope;scopes.appendChild(item);});
+  detailsBox.hidden=false;actions.hidden=false;showMessage("Leia o aplicativo e as permissões solicitadas. Autorize somente se reconhecer esta solicitação.");
+ }
+ async function decide(approved){
+  if(!supabase||!authorizationId)return;setBusy(true);showMessage(approved?"Processando sua autorização…":"Registrando sua decisão…");
+  try{const method=approved?supabase.auth.oauth.approveAuthorization:supabase.auth.oauth.denyAuthorization;
+   const {data,error}=await method.call(supabase.auth.oauth,authorizationId,{skipBrowserRedirect:true});if(error)throw error;
+   if(!data||!data.redirect_url)throw new Error("O servidor não retornou um endereço de redirecionamento válido.");location.assign(data.redirect_url);
+  }catch(error){showMessage(error.message||"Não foi possível processar a autorização. Tente novamente.","error");setBusy(false);}
+ }
+ approve.addEventListener("click",()=>decide(true));deny.addEventListener("click",()=>decide(false));
+ init().catch(error=>showMessage(error.message||"Não foi possível validar a solicitação.","error"));
+})();
+</script></body></html>

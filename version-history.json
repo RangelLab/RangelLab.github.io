@@ -1,0 +1,337 @@
+[
+  {
+    "version": "1.0.34",
+    "date": "2026-10-22",
+    "timestamp": "2026-10-22T20:56:47.055Z",
+    "title": "Melhoria visual",
+    "changes": [
+      "Melhoria visual"
+    ]
+  },
+  {
+    "version": "1.0.33",
+    "date": "2026-10-22",
+    "timestamp": "2026-10-22T20:33:48.861Z",
+    "title": "Alterações no commit 6328bf9cf08fd832d40f5ad1b65c64a4f6ae6d37: Atualização",
+    "changes": [
+      "Alterações no commit 6328bf9cf08fd832d40f5ad1b65c64a4f6ae6d37: Atualização"
+    ]
+  },
+  {
+    "version": "1.0.32",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T16:17:55.747Z",
+    "title": "Update RangelLab branding and auth redirects",
+    "changes": [
+      "Update RangelLab branding and auth redirects"
+    ]
+  },
+  {
+    "version": "1.0.31",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T13:05:56.662Z",
+    "title": "Correct portal app links to the RangelLab Pages domain",
+    "changes": [
+      "Correct portal app links to the RangelLab Pages domain"
+    ]
+  },
+  {
+    "version": "1.0.30",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T13:05:22.033Z",
+    "title": "Refresh RangelLab monogram to RL",
+    "changes": [
+      "Refresh RangelLab monogram to RL",
+      "Use the RL RangelLab brand mark in portal",
+      "Use RL monogram on account page",
+      "Use RL monogram on authentication page",
+      "Replace legacy portal branding with RangelLab",
+      "Use RL monogram on administration page",
+      "Replace legacy portal branding in settings",
+      "Replace legacy branding on OAuth consent page"
+    ]
+  },
+  {
+    "version": "1.0.29",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T12:21:51.470Z",
+    "title": "Use exact RangelLab branding in app URLs",
+    "changes": [
+      "Use exact RangelLab branding in app URLs"
+    ]
+  },
+  {
+    "version": "1.0.28",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T12:06:58.266Z",
+    "title": "Update app links to RangelLab Pages",
+    "changes": [
+      "Update app links to RangelLab Pages"
+    ]
+  },
+  {
+    "version": "1.0.27",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T11:54:58.062Z",
+    "title": "Update brand references to RangelLab",
+    "changes": [
+      "Update brand references to RangelLab"
+    ]
+  },
+  {
+    "version": "1.0.26",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T02:30:17.033Z",
+    "title": "Finish RangelDev wordmark on portal",
+    "changes": [
+      "Finish RangelDev wordmark on portal"
+    ]
+  },
+  {
+    "version": "1.0.25",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T02:30:07.057Z",
+    "title": "Apply RangelDev branding to version history",
+    "changes": [
+      "Apply RangelDev branding to version history",
+      "Apply RangelDev branding to admin page"
+    ]
+  },
+  {
+    "version": "1.0.24",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T02:29:54.718Z",
+    "title": "Create RangelDev RD monogram portal icon",
+    "changes": [
+      "Create RangelDev RD monogram portal icon",
+      "Apply RangelDev branding to account page"
+    ]
+  },
+  {
+    "version": "1.0.23",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T02:29:32.565Z",
+    "title": "Update portal PWA branding to RangelDev",
+    "changes": [
+      "Update portal PWA branding to RangelDev"
+    ]
+  },
+  {
+    "version": "1.0.22",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T02:29:22.320Z",
+    "title": "Rebrand portal as RangelDev",
+    "changes": [
+      "Rebrand portal as RangelDev",
+      "Rebrand portal authentication as RangelDev"
+    ]
+  },
+  {
+    "version": "1.0.21",
+    "date": "2026-10-17",
+    "timestamp": "2026-10-17T00:00:26.404Z",
+    "title": "Fix account page markup and official RS logo",
+    "changes": [
+      "Fix account page markup and official RS logo",
+      "Remove stray markdown fence from account page"
+    ]
+  },
+  {
+    "version": "1.0.20",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T23:56:53.323Z",
+    "title": "Finish RaSon HUB consent page branding",
+    "changes": [
+      "Finish RaSon HUB consent page branding",
+      "Update RaSon HUB app icon to RS mark"
+    ]
+  },
+  {
+    "version": "1.0.19",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T23:56:40.461Z",
+    "title": "Update RaSon HUB branding and login redirect",
+    "changes": [
+      "Update RaSon HUB branding and login redirect"
+    ]
+  },
+  {
+    "version": "1.0.18",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T23:51:04.573Z",
+    "title": "Fix portal sign-in button label",
+    "changes": [
+      "Fix portal sign-in button label"
+    ]
+  },
+  {
+    "version": "1.0.17",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T23:47:33.913Z",
+    "title": "Atualizar o index.html",
+    "changes": [
+      "Atualizar o index.html"
+    ]
+  },
+  {
+    "version": "1.0.16",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T23:36:05.700Z",
+    "title": "Center RS monogram in RaSon HUB logo",
+    "changes": [
+      "Center RS monogram in RaSon HUB logo"
+    ]
+  },
+  {
+    "version": "1.0.15",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T23:30:45.284Z",
+    "title": "Fix RaSon HUB logo monogram to show RS",
+    "changes": [
+      "Fix RaSon HUB logo monogram to show RS"
+    ]
+  },
+  {
+    "version": "1.0.14",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T23:17:33.374Z",
+    "title": "Aplica logo completa RS + RaSon HUB em azul e verde, sem roxo",
+    "changes": [
+      "Aplica logo completa RS + RaSon HUB em azul e verde, sem roxo"
+    ]
+  },
+  {
+    "version": "1.0.13",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T23:14:16.857Z",
+    "title": "Aplica wordmark aprovado RaSon HUB no portal",
+    "changes": [
+      "Aplica wordmark aprovado RaSon HUB no portal"
+    ]
+  },
+  {
+    "version": "1.0.12",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T23:10:19.807Z",
+    "title": "Simplifica monograma para RS (portal)",
+    "changes": [
+      "Simplifica monograma para RS (portal)",
+      "Simplifica monograma para RS (portal-icon)"
+    ]
+  },
+  {
+    "version": "1.0.11",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T23:02:04.773Z",
+    "title": "Corrige monograma da marca do portal para RSH",
+    "changes": [
+      "Corrige monograma da marca do portal para RSH"
+    ]
+  },
+  {
+    "version": "1.0.10",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T22:40:35.849Z",
+    "title": "Corrige monograma da marca para RSH",
+    "changes": [
+      "Corrige monograma da marca para RSH"
+    ]
+  },
+  {
+    "version": "1.0.9",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T22:32:03.216Z",
+    "title": "Atualiza links dos aplicativos para RaSon HUB",
+    "changes": [
+      "Atualiza links dos aplicativos para RaSon HUB"
+    ]
+  },
+  {
+    "version": "1.0.8",
+    "date": "2026-10-16",
+    "timestamp": "2026-10-16T13:04:25.588Z",
+    "title": "Align semantic versioning behavior and tests",
+    "changes": [
+      "Align semantic versioning behavior and tests"
+    ]
+  },
+  {
+    "version": "1.0.7",
+    "date": "2026-10-16",
+    "title": "Run versioning tests before bump",
+    "changes": [
+      "Run versioning tests before bump"
+    ]
+  },
+  {
+    "version": "1.0.6",
+    "date": "2026-10-16",
+    "title": "Cover automatic semantic versioning",
+    "changes": [
+      "Cover automatic semantic versioning",
+      "Add semantic version test command"
+    ]
+  },
+  {
+    "version": "1.0.5",
+    "date": "2026-10-16",
+    "title": "Document semantic versioning rules",
+    "changes": [
+      "Document semantic versioning rules"
+    ]
+  },
+  {
+    "version": "1.0.4",
+    "date": "2026-10-16",
+    "title": "Align JSLynk versioning with LynkNotes",
+    "changes": [
+      "Align JSLynk versioning with LynkNotes",
+      "Align automatic workflow with LynkNotes",
+      "Remove legacy REV policy",
+      "Publish after semantic version workflow",
+      "Remove legacy REV workflow naming",
+      "Align JSLynk validation with LynkNotes",
+      "Align workflow with LynkNotes",
+      "Align commit handling with LynkNotes",
+      "Detect repository-wide changes"
+    ]
+  },
+  {
+    "version": "1.0.3",
+    "date": "2026-10-16",
+    "title": "Padronização do versionamento",
+    "changes": [
+      "Removido o REV e padronizada a versão semântica MAJOR.MINOR.PATCH.",
+      "Ajustado o fluxo automático e a validação do histórico de versões."
+    ]
+  },
+  {
+    "version": "1.0.2",
+    "date": "2026-10-15",
+    "title": "Atualização do JSLynk",
+    "changes": [
+      "Atualizações, melhorias e correções desta versão."
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "date": "2026-10-15",
+    "title": "Atualização do JSLynk",
+    "changes": [
+      "Atualizações, melhorias e correções desta versão."
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "date": "2026-10-13",
+    "title": "Versão inicial e melhorias do portal",
+    "changes": [
+      "Criado o versionamento próprio do portal, independente dos aplicativos conectados.",
+      "Adicionada a área Configurações com acesso à versão e ao histórico de alterações.",
+      "Removido do menu da conta o atalho duplicado para editar dados do usuário; a edição permanece em Configurações.",
+      "Criado ícone próprio JSLynk com as iniciais JS em degradê violeta e adicionado manifest PWA.",
+      "Atualizado o visual noturno do portal com gradientes e melhor adaptação a dispositivos móveis.",
+      "Criados ícones personalizados para FinMonth e ListLynk, preservando o fluxo de autenticação e os links existentes dos aplicativos."
+    ]
+  }
+]

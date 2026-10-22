@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10131c">
+<title>Dados da conta — RangelLab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{color-scheme:dark;--bg:#10131c;--panel:#171b27;--line:rgba(255,255,255,.1);--muted:#a3abc0;--text:#f5f7ff;--violet:#00B4E6;--mint:#00D1A7}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#159cf41c,transparent 34rem),var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;padding:24px}
+a{color:#7eead4}
+.wrap{width:min(100%,520px);margin:24px auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.25rem "Space Grotesk",sans-serif;margin-bottom:22px}
+.mark{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;background:transparent}.mark svg{display:block;width:100%;height:100%}
+.panel{border:1px solid var(--line);border-radius:24px;padding:clamp(20px,5vw,30px);background:#171b27ef;box-shadow:0 24px 80px #0004}
+h1{font:600 1.55rem "Space Grotesk",sans-serif;margin:0}
+p{color:var(--muted);font-size:.9rem;line-height:1.6}
+.field{display:grid;gap:7px;margin:18px 0}
+.field label{font-size:.83rem;font-weight:600}
+.field input{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#0f121b;color:var(--text);font:inherit;outline:none}
+.field input:focus{border-color:var(--violet)}
+.hint{font-size:.78rem;color:var(--muted);margin-top:4px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:#ffffff08;color:var(--text);font:600 .9rem "DM Sans",sans-serif;text-decoration:none;cursor:pointer}
+.primary{background:linear-gradient(135deg,#b7a0ff,#8c73ed);color:#171329;border:0}
+.btn:disabled{opacity:.55;cursor:wait}
+.notice{display:none;padding:11px 13px;border-radius:12px;font-size:.86rem;line-height:1.5;margin-top:15px}
+.notice.show{display:block}
+.success{background:#00D1A71a;color:var(--mint)}
+.error{background:#f871711a;color:#fca5a5}
+</style>
+</head>
+
+<body>
+<main class="wrap">
+<a class="brand" href="./">
+  <span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rl-ring" x1="5" y1="8" x2="59" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#00B4E6"/><stop offset="1" stop-color="#00D1A7"/></linearGradient></defs><circle cx="32" cy="32" r="28" fill="#07111f" stroke="url(#rl-ring)" stroke-width="3"/><text x="23" y="42" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="800" text-anchor="middle" fill="#F5F7FF">R</text><text x="40" y="42" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="800" text-anchor="middle" fill="#20E0B9">L</text></svg></span>
+  <span>RangelLab</span>
+</a>
+
+<section class="panel">
+  <h1>Editar dados do usuário</h1>
+  <p>Atualize os dados da sua conta RangelLab. As alterações de e-mail podem exigir confirmação.</p>
+
+  <form id="profile-form">
+    <div class="field">
+      <label for="name">Nome</label>
+      <input id="name" autocomplete="name" required maxlength="120">
+    </div>
+
+    <div class="field">
+      <label for="email">E-mail</label>
+      <input id="email" type="email" autocomplete="email" required>
+    </div>
+
+    <div class="field">
+      <label for="password">Nova senha</label>
+      <input id="password" type="password" autocomplete="new-password" minlength="8" placeholder="Deixe em branco para manter">
+      <span class="hint">Use pelo menos 8 caracteres. Não preencha se não quiser alterar a senha.</span>
+    </div>
+
+    <div id="notice" class="notice" role="status" aria-live="polite"></div>
+
+    <div class="actions">
+      <button id="save" class="btn primary" type="submit">Salvar alterações</button>
+      <a class="btn" href="./">Voltar ao RangelLab</a>
+    </div>
+  </form>
+
+  <hr style="border:0;border-top:1px solid var(--line);margin:28px 0 20px">
+
+  <section aria-labelledby="delete-title">
+    <h2 id="delete-title" style="font-size:1.1rem;color:#fca5a5">Excluir minha conta</h2>
+    <p>Essa ação é permanente. Você precisará confirmar a solicitação pelo e-mail cadastrado. A exclusão da identidade RangelLab pode afetar o acesso aos aplicativos conectados.</p>
+
+    <button id="request-delete" class="btn" type="button" style="border-color:#f87171;color:#fca5a5">
+      Solicitar exclusão da conta
+    </button>
+
+    <div id="delete-notice" class="notice" role="status" aria-live="polite"></div>
+  </section>
+</section>
+</main>
+
+<script src="./auth-config.js"></script>
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+const config = window.JSLYNK_AUTH_CONFIG || {};
+const valid =
+  /^https:\/\//.test(config.url || "") &&
+  /^(sb_publishable_[A-Za-z0-9_-]+|eyJ[A-Za-z0-9_.-]+)$/.test(config.publishableKey || "");
+
+const form = document.querySelector("#profile-form");
+const notice = document.querySelector("#notice");
+const save = document.querySelector("#save");
+const deleteButton = document.querySelector("#request-delete");
+const deleteNotice = document.querySelector("#delete-notice");
+
+let supabase;
+
+function message(text, type) {
+  notice.textContent = text;
+  notice.className = "notice show " + type;
+}
+
+function deleteMessage(text, type) {
+  deleteNotice.textContent = text;
+  deleteNotice.className = "notice show " + type;
+}
+
+function showDeletionComplete() {
+  document.body.innerHTML = `
+    <main style="max-width:600px;margin:80px auto;padding:24px;font-family:system-ui;color:#f5f7ff;background:#10131c;min-height:100vh">
+      <h1>Conta excluída</h1>
+      <p>A exclusão da sua conta RangelLab foi concluída.</p>
+      <a href="./">Voltar ao RangelLab</a>
+    </main>
+  `;
+}
+
+if (!valid) {
+  message("A configuração de autenticação do RangelLab não foi encontrada.", "error");
+  save.disabled = true;
+  deleteButton.disabled = true;
+} else {
+  supabase = createClient(
+    config.url,
+    config.publishableKey,
+    {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+      }
+    }
+  );
+
+  const params = new URLSearchParams(window.location.search);
+  const deletingAccount = params.get("delete-confirm") === "1";
+
+  /*
+   * Processa a confirmação antes do carregamento normal do perfil.
+   * Se a exclusão for concluída, a execução termina aqui.
+   */
+  let deletionCompleted = false;
+
+  if (deletingAccount) {
+    try {
+      const { data: sessionData, error: sessionError } =
+        await supabase.auth.getSession();
+
+      if (sessionError) throw sessionError;
+
+      if (!sessionData.session) {
+        throw new Error(
+          "Sua sessão não está ativa. Abra novamente o link de confirmação do e-mail."
+        );
+      }
+
+      const { error } = await supabase.functions.invoke(
+        "confirm-account-deletion",
+        { body: {} }
+      );
+
+      if (error) throw error;
+
+      await supabase.auth.signOut();
+
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname
+      );
+
+      showDeletionComplete();
+      deletionCompleted = true;
+    } catch (error) {
+      console.error("Falha ao confirmar exclusão:", error);
+
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname
+      );
+
+      alert(
+        error.message ||
+        "Não foi possível confirmar a exclusão. Entre em contato com o suporte."
+      );
+    }
+  }
+
+  /*
+   * Não carrega o perfil se a confirmação de exclusão foi processada.
+   */
+  if (!deletionCompleted) {
+    await loadAccount();
+  }
+}
+
+async function loadAccount() {
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error || !data.user) {
+    location.replace("./auth.html");
+    return;
+  }
+
+  const user = data.user;
+
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("full_name")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  document.querySelector("#name").value =
+    profile?.full_name ||
+    user.user_metadata?.display_name ||
+    user.user_metadata?.full_name ||
+    "";
+
+  document.querySelector("#email").value = user.email || "";
+
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    save.disabled = true;
+    notice.className = "notice";
+    notice.textContent = "";
+
+    try {
+      const name = document.querySelector("#name").value.trim();
+      const email = document.querySelector("#email").value.trim();
+      const password = document.querySelector("#password").value;
+
+      if (!name) {
+        throw new Error("Informe seu nome.");
+      }
+
+      if (password && password.length < 8) {
+        throw new Error("A nova senha precisa ter pelo menos 8 caracteres.");
+      }
+
+      const changes = {};
+
+      if (email !== user.email) changes.email = email;
+      if (password) changes.password = password;
+
+      changes.data = {
+        ...(user.user_metadata || {}),
+        display_name: name,
+        full_name: name
+      };
+
+      const { error: authError } =
+        await supabase.auth.updateUser(changes);
+
+      if (authError) throw authError;
+
+      const { error: profileError } = await supabase
+        .from("profiles")
+        .update({ full_name: name })
+        .eq("id", user.id);
+
+      if (profileError) throw profileError;
+
+      document.querySelector("#password").value = "";
+
+      message(
+        email !== user.email
+          ? "Nome atualizado. Confira seu e-mail para confirmar a alteração do endereço."
+          : "Dados da conta atualizados com sucesso.",
+        "success"
+      );
+    } catch (error) {
+      message(
+        error instanceof Error
+          ? error.message
+          : "Não foi possível atualizar os dados.",
+        "error"
+      );
+    } finally {
+      save.disabled = false;
+    }
+  });
+}
+
+/*
+ * Solicita exclusão e envia o link de confirmação por e-mail.
+ */
+deleteButton.addEventListener("click", async () => {
+  const confirmed = confirm(
+    "Deseja solicitar a exclusão permanente da sua conta RangelLab? Você precisará confirmar pelo e-mail cadastrado."
+  );
+
+  if (!confirmed) return;
+
+  deleteButton.disabled = true;
+
+  try {
+    const { data: sessionData, error: sessionError } =
+      await supabase.auth.getSession();
+
+    if (sessionError) throw sessionError;
+
+    if (!sessionData.session) {
+      throw new Error("Sua sessão expirou. Entre novamente.");
+    }
+
+    const { data, error } = await supabase.functions.invoke(
+      "request-account-deletion",
+      { body: {} }
+    );
+
+    if (error) throw error;
+
+    const email = data?.email;
+
+    if (!email) {
+      throw new Error("Não foi possível confirmar o e-mail da conta.");
+    }
+
+    const { error: emailError } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        shouldCreateUser: false,
+        emailRedirectTo: new URL(
+          "./account.html?delete-confirm=1",
+          location.href
+        ).href
+      }
+    });
+
+    if (emailError) throw emailError;
+
+    deleteMessage(
+      "Solicitação iniciada. Confira o e-mail cadastrado e abra o link de confirmação. A solicitação expira em 30 minutos.",
+      "success"
+    );
+  } catch (error) {
+    deleteMessage(
+      error.message || "Não foi possível iniciar a exclusão.",
+      "error"
+    );
+  } finally {
+    deleteButton.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

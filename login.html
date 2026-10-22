@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131c">
+  <meta name="description" content="Entre ou crie sua conta RangelLab.">
+  <title>Acessar — RangelLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#10131c;--panel:#171b27;--line:rgba(255,255,255,.11);--muted:#a3abc0;--text:#f5f7ff;--violet:#b9a8ff;--mint:#75e4c1}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 10% 0%,#7c5ce629,transparent 34rem),var(--bg);color:var(--text);font-family:"DM Sans",sans-serif}
+    a{color:var(--violet)}.shell{width:min(100%,460px)}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font:700 1.25rem "Space Grotesk",sans-serif;letter-spacing:-.05em;margin-bottom:28px}.mark{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;background:transparent}.mark svg{display:block;width:100%;height:100%}
+    .panel{padding:clamp(24px,6vw,36px);border:1px solid var(--line);border-radius:24px;background:#171b27eF;box-shadow:0 24px 80px #0003}h1{font:700 clamp(1.8rem,6vw,2.25rem) "Space Grotesk",sans-serif;letter-spacing:-.055em;margin:0 0 9px}.sub{color:var(--muted);line-height:1.65;margin:0 0 26px}
+    .tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:5px;border:1px solid var(--line);border-radius:13px;margin-bottom:22px}.tabs button{background:transparent;color:var(--muted);border:0;border-radius:9px;padding:11px;font:600 .92rem inherit;cursor:pointer}.tabs button[aria-selected=true]{background:#a78bfa22;color:#e5ddff}
+    label{display:block;font-size:.88rem;font-weight:600;margin:16px 0 8px}input{width:100%;padding:13px 14px;border-radius:11px;border:1px solid var(--line);background:#0f121b;color:var(--text);font:inherit;outline:none}input:focus{border-color:var(--violet);box-shadow:0 0 0 3px #a78bfa22}
+    .primary{width:100%;border:0;border-radius:11px;padding:14px;margin-top:22px;background:#f5f4ff;color:#171522;font:700 .96rem "DM Sans",sans-serif;cursor:pointer}.primary:disabled{opacity:.6;cursor:wait}.helper{display:flex;justify-content:flex-end;margin-top:14px;font-size:.87rem}.status{display:none;padding:12px 13px;border-radius:10px;margin-top:16px;font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}.status.show{display:block}.status.error{color:#ffc4c4;background:#7e25252b;border:1px solid #b84b4b55}.status.ok{color:#b7f5dc;background:#1b76502b;border:1px solid #75e4c155}.foot{color:var(--muted);font-size:.82rem;line-height:1.6;text-align:center;margin-top:20px}.hidden{display:none!important}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <a class="brand" href="./" aria-label="Voltar ao portal RangelLab"><span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rl-ring" x1="5" y1="8" x2="59" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#00B4E6"/><stop offset="1" stop-color="#00D1A7"/></linearGradient></defs><circle cx="32" cy="32" r="28" fill="#07111f" stroke="url(#rl-ring)" stroke-width="3"/><text x="23" y="42" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="800" text-anchor="middle" fill="#F5F7FF">R</text><text x="40" y="42" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="800" text-anchor="middle" fill="#20E0B9">L</text></svg></span><span>RangelLab</span></a>
+    <section class="panel" aria-labelledby="title">
+      <h1 id="title">Sua identidade, em um só lugar.</h1>
+      <p class="sub">Acesse sua conta RangelLab ou crie uma conta para começar.</p>
+      <div class="tabs" role="tablist" aria-label="Tipo de acesso">
+        <button type="button" id="login-tab" role="tab" aria-selected="true">Entrar</button>
+        <button type="button" id="signup-tab" role="tab" aria-selected="false">Criar conta</button>
+      </div>
+      <form id="auth-form">
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="voce@exemplo.com">
+        <div id="password-field">
+          <label for="password">Senha</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" minlength="8" placeholder="Pelo menos 8 caracteres">
+        </div>
+        <button class="primary" id="submit" type="submit">Entrar</button>
+      </form>
+      <div class="helper" id="recovery-row"><a href="#" id="recovery">Esqueci minha senha</a></div>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </section>
+    <p class="foot">A autenticação do RangelLab está em preparação. O acesso aos aplicativos e a integração de login único só serão ativados após testes de segurança.</p>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./auth-config.js"></script>
+  <script>
+    (() => {
+      const form = document.getElementById('auth-form');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const passwordField = document.getElementById('password-field');
+      const submit = document.getElementById('submit');
+      const status = document.getElementById('status');
+      const recoveryRow = document.getElementById('recovery-row');
+      const loginTab = document.getElementById('login-tab');
+      const signupTab = document.getElementById('signup-tab');
+      let mode = 'login';
+      let client = null;
+
+      function message(text, kind) {
+        status.textContent = text;
+        status.className = 'status show ' + kind;
+      }
+      function setMode(next) {
+        mode = next;
+        const login = mode === 'login';
+        loginTab.setAttribute('aria-selected', String(login));
+        signupTab.setAttribute('aria-selected', String(!login));
+        passwordField.classList.remove('hidden');
+        password.required = true;
+        password.autocomplete = login ? 'current-password' : 'new-password';
+        submit.textContent = login ? 'Entrar' : 'Criar conta';
+        recoveryRow.classList.toggle('hidden', !login);
+        status.className = 'status';
+      }
+      loginTab.addEventListener('click', () => setMode('login'));
+      signupTab.addEventListener('click', () => setMode('signup'));
+
+      const config = window.JSLYNK_AUTH_CONFIG;
+      if (!window.supabase || !config || !config.url || !config.publishableKey) {
+        message('A autenticação ainda não foi configurada. Falta adicionar a chave pública do projeto Supabase jslynk-identity em auth-config.js.', 'error');
+        submit.disabled = true;
+        loginTab.disabled = true;
+        signupTab.disabled = true;
+        document.getElementById('recovery').setAttribute('aria-disabled', 'true');
+        return;
+      }
+      client = window.supabase.createClient(config.url, config.publishableKey, {
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        status.className = 'status';
+        submit.disabled = true;
+        const address = email.value.trim();
+        try {
+          if (mode === 'signup') {
+            if (password.value.length < 8) throw new Error('Use uma senha com pelo menos 8 caracteres.');
+            const { error } = await client.auth.signUp({
+              email: address,
+              password: password.value,
+              options: { emailRedirectTo: new URL('./login.html', window.location.href).href }
+            });
+            if (error) throw error;
+            message('Se o cadastro foi aceito, confira seu e-mail para confirmar a conta antes de entrar.', 'ok');
+            form.reset();
+          } else {
+            const { error } = await client.auth.signInWithPassword({ email: address, password: password.value });
+            if (error) throw error;
+            const { data } = await client.auth.getSession();
+            message(data.session ? 'Login realizado. A sessão RangelLab está ativa neste navegador; o acesso integrado aos aplicativos ainda não foi ativado.' : 'Login processado. Confira o estado da sua sessão.', 'ok');
+          }
+        } catch (error) {
+          message(error && error.message ? error.message : 'Não foi possível concluir a solicitação. Tente novamente.', 'error');
+        } finally {
+          submit.disabled = false;
+        }
+      });
+
+      document.getElementById('recovery').addEventListener('click', async (event) => {
+        event.preventDefault();
+        status.className = 'status';
+        if (!email.value.trim()) {
+          message('Digite seu e-mail acima para receber as instruções de recuperação.', 'error');
+          email.focus();
+          return;
+        }
+        try {
+          const { error } = await client.auth.resetPasswordForEmail(email.value.trim(), {
+            redirectTo: new URL('./login.html?recovery=1', window.location.href).href
+          });
+          if (error) throw error;
+          message('Se existir uma conta para esse endereço, você receberá as instruções de recuperação.', 'ok');
+        } catch (error) {
+          message(error && error.message ? error.message : 'Não foi possível solicitar a recuperação agora.', 'error');
+        }
+      });
+
+      if (new URLSearchParams(window.location.search).has('recovery')) {
+        message('Abra o link enviado por e-mail. A redefinição final de senha será habilitada após configurarmos e testarmos o retorno de recuperação.', 'ok');
+      }
+    })();
+  </script>
+</body>
+</html>

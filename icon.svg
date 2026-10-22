@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="accent" x1="292" y1="112" x2="420" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00B4E6"/>
+      <stop offset="1" stop-color="#00D1A7"/>
+    </linearGradient>
+  </defs>
+  <title>RangelLab</title>
+  <rect width="512" height="512" rx="112" fill="#0B0F1A"/>
+  <rect x="20" y="20" width="472" height="472" rx="94" fill="none" stroke="#253246" stroke-width="8"/>
+
+  <path d="M96 112h69c64 0 98 34 98 88 0 42-21 69-58 82l69 78h-64l-60-71h-5v71H96V112zm49 45v87h19c31 0 48-13 48-43 0-29-17-44-48-44h-19z" fill="#F1F5F9" fill-rule="evenodd"/>
+  <path d="M292 112h48v200h80v48H292z" fill="url(#accent)"/>
+</svg>

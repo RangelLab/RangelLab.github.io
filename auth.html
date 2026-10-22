@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131c">
+  <meta name="description" content="Entre ou crie sua conta RangelLab.">
+  <title>Entrar — RangelLab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#10131c;--panel:#171b27;--line:rgba(255,255,255,.1);--muted:#a3abc0;--text:#f5f7ff;--violet:#00B4E6;--mint:#00D1A7}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#7c5ce62b,transparent 34rem),var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;display:grid;place-items:center;padding:24px}
+    a{color:#00D1A7}.wrap{width:min(100%,440px)}.brand{display:flex;justify-content:center;align-items:center;gap:10px;text-decoration:none;font:700 1.3rem "Space Grotesk",sans-serif;margin-bottom:26px;letter-spacing:-.05em}.mark{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;background:transparent}.mark svg{display:block;width:100%;height:100%}
+    .panel{border:1px solid var(--line);border-radius:24px;padding:28px;background:#171b27eF;box-shadow:0 24px 80px #0004}.eyebrow{text-transform:uppercase;letter-spacing:.1em;font-size:.73rem;font-weight:700;color:#8FE7F8}h1{font:600 2rem "Space Grotesk",sans-serif;letter-spacing:-.05em;margin:10px 0}p{color:var(--muted);line-height:1.65;font-size:.93rem}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;background:#0f121b;border-radius:12px;margin:22px 0}.tabs button{border:0;border-radius:9px;padding:10px;background:transparent;color:var(--muted);font:600 .9rem "DM Sans",sans-serif;cursor:pointer}.tabs button[aria-selected=true]{background:#28243c;color:#e7e0ff}
+    label{display:block;font-size:.85rem;font-weight:600;margin:15px 0 7px}input{width:100%;border:1px solid var(--line);background:#10131c;color:var(--text);border-radius:11px;padding:13px 14px;font:inherit;outline:none}input:focus{border-color:var(--violet);box-shadow:0 0 0 3px #00B4E622}.primary{width:100%;border:0;border-radius:11px;padding:13px 15px;margin-top:20px;background:#f5f4ff;color:#171522;font:700 .95rem "DM Sans",sans-serif;cursor:pointer}.primary:disabled{opacity:.6;cursor:wait}.secondary{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px;margin-top:10px;background:transparent;color:var(--text);font:600 .9rem "DM Sans",sans-serif;cursor:pointer}.message{display:none;margin-top:16px;padding:12px;border:1px solid var(--line);border-radius:11px;font-size:.88rem;line-height:1.55;overflow-wrap:anywhere}.message.show{display:block}.message.error{border-color:#f8717180;color:#fecaca}.message.ok{border-color:#00D1A780;color:#a7f3d0}.foot{text-align:center;font-size:.83rem;margin-top:18px}.foot a{text-decoration:none}.security{font-size:.78rem;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}[hidden]{display:none!important}
+    @media(max-width:420px){.panel{padding:22px}h1{font-size:1.8rem}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="brand" href="https://rasonhub.github.io/" aria-label="RangelLab início"><span class="mark" aria-hidden="true"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="rl-ring" x1="5" y1="8" x2="59" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#00B4E6"/><stop offset="1" stop-color="#00D1A7"/></linearGradient></defs><circle cx="32" cy="32" r="28" fill="#07111f" stroke="url(#rl-ring)" stroke-width="3"/><text x="23" y="42" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="800" text-anchor="middle" fill="#F5F7FF">R</text><text x="40" y="42" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="800" text-anchor="middle" fill="#20E0B9">L</text></svg></span><span>RangelLab</span></a>
+    <section class="panel" aria-labelledby="title">
+      <span class="eyebrow">Sua identidade digital</span>
+      <h1 id="title">Acesse seu espaço.</h1>
+      <p id="subtitle">Entre com sua conta RangelLab para continuar.</p>
+      <div class="tabs" role="tablist" aria-label="Tipo de acesso">
+        <button type="button" role="tab" id="login-tab" aria-selected="true">Entrar</button>
+        <button type="button" role="tab" id="signup-tab" aria-selected="false">Criar conta</button>
+      </div>
+      <form id="auth-form">
+        <div id="name-wrap" hidden><label for="name">Nome</label><input id="name" name="name" autocomplete="name" maxlength="100"></div>
+        <label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254">
+        <label for="password">Senha</label><input id="password" name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128">
+        <button class="primary" id="submit" type="submit">Entrar</button>
+      </form>
+      <button class="secondary" id="forgot" type="button">Esqueci minha senha</button>
+      <button class="secondary" id="logout" type="button" hidden>Sair da conta</button>
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+      <p class="security">Os cadastros precisam ser aprovados pela equipe RangelLab antes que o acesso aos aplicativos seja liberado.</p>
+    </section>
+    <p class="foot"><a href="https://rangellab.github.io/">Voltar ao portal RangelLab</a></p>
+  </main>
+  <script src="./auth-config.js"></script>
+  <script type="module">
+    import { createClient } from "https://esm.sh/@supabase/supabase-js@2.117.3";
+    const config = window.JSLYNK_AUTH_CONFIG || {};
+    const portalOrigin = "https://rasonhub.github.io";
+    const form = document.querySelector("#auth-form");
+    const loginTab = document.querySelector("#login-tab");
+    const signupTab = document.querySelector("#signup-tab");
+    const nameWrap = document.querySelector("#name-wrap");
+    const nameInput = document.querySelector("#name");
+    const emailInput = document.querySelector("#email");
+    const passwordInput = document.querySelector("#password");
+    const submit = document.querySelector("#submit");
+    const forgot = document.querySelector("#forgot");
+    const logout = document.querySelector("#logout");
+    const message = document.querySelector("#message");
+    let mode = "login";
+    let recoveryMode = false;
+    let supabase = null;
+    const configured = /^https:\/\//.test(config.url || "") && /^(sb_publishable_[A-Za-z0-9_\-]+|eyJ[A-Za-z0-9_\-\.]+)$/.test(config.publishableKey || "");
+    if (configured) supabase = createClient(config.url, config.publishableKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
+
+    function showMessage(text, type = "ok") {
+      message.textContent = text;
+      message.className = "message show " + type;
+    }
+    function setMode(next) {
+      mode = next;
+      const signup = mode === "signup";
+      loginTab.setAttribute("aria-selected", String(!signup));
+      signupTab.setAttribute("aria-selected", String(signup));
+      nameWrap.hidden = !signup;
+      nameInput.required = signup;
+      passwordInput.autocomplete = signup ? "new-password" : "current-password";
+      submit.textContent = signup ? "Criar conta" : "Entrar";
+      forgot.hidden = signup;
+      document.querySelector("#title").textContent = signup ? "Crie sua conta." : "Acesse seu espaço.";
+      document.querySelector("#subtitle").textContent = signup ? "Comece sua identidade no ecossistema RangelLab." : "Entre com sua conta RangelLab para continuar.";
+      message.className = "message";
+    }
+    loginTab.addEventListener("click", () => setMode("login"));
+    signupTab.addEventListener("click", () => setMode("signup"));
+    function checkConfig() {
+      if (!supabase) {
+        showMessage("A autenticação ainda não foi conectada. Configure a chave publishable/anon pública do projeto jslynk-identity em auth-config.js. Não use service_role nem segredos.", "error");
+        return false;
+      }
+      return true;
+    }
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!checkConfig()) return;
+      submit.disabled = true;
+      try {
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+        if (recoveryMode) {
+          const { error } = await supabase.auth.updateUser({ password });
+          if (error) throw error;
+          recoveryMode = false;
+          showMessage("Senha atualizada com sucesso. Agora você pode entrar com a nova senha.");
+          setMode("login");
+          passwordInput.value = "";
+        } else if (mode === "signup") {
+          const { data, error } = await supabase.functions.invoke("signup-request", {
+            body: { name: nameInput.value.trim(), email, password }
+          });
+          if (error) throw error;
+          if (data?.error) throw new Error(data.error);
+          showMessage(data?.message || "Solicitação enviada. Aguarde a aprovação do administrador.");
+          form.reset();
+          setMode("login");
+        } else {
+          const { error } = await supabase.auth.signInWithPassword({ email, password });
+          if (error) throw error;
+          showMessage("Login realizado. Redirecionando para o portal RangelLab…");
+          logout.hidden = false;
+          const returnTo = new URLSearchParams(location.search).get("returnTo");
+          const safeReturnTo = (() => {
+            if (!returnTo || !returnTo.startsWith("/") || returnTo.startsWith("//")) return null;
+            try {
+              const target = new URL(returnTo, portalOrigin);
+              if (target.origin !== portalOrigin || target.pathname !== "/oauth/consent/") return null;
+              if (!target.searchParams.get("authorization_id")) return null;
+              return target.href;
+            } catch { return null; }
+          })();
+          window.location.assign(safeReturnTo || `${portalOrigin}/?auth=success`);
+        }
+      } catch (error) {
+        showMessage(error.message || "Não foi possível concluir a solicitação. Tente novamente.", "error");
+      } finally { submit.disabled = false; }
+    });
+    forgot.addEventListener("click", async () => {
+      if (!checkConfig()) return;
+      const email = emailInput.value.trim();
+      if (!email) { showMessage("Informe seu e-mail acima para receber o link de recuperação.", "error"); emailInput.focus(); return; }
+      forgot.disabled = true;
+      try {
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: new URL("./auth.html?reset=1", location.href).href
+        });
+        if (error) throw error;
+        showMessage("Se houver uma conta para esse e-mail, você receberá as instruções de recuperação.");
+      } catch (error) { showMessage(error.message || "Não foi possível solicitar a recuperação.", "error"); }
+      finally { forgot.disabled = false; }
+    });
+    logout.addEventListener("click", async () => {
+      if (!checkConfig()) return;
+      const { error } = await supabase.auth.signOut();
+      if (error) showMessage(error.message, "error");
+      else { logout.hidden = true; showMessage("Você saiu da conta RangelLab."); }
+    });
+    if (supabase) {
+      supabase.auth.onAuthStateChange((event, session) => {
+        if (session) logout.hidden = false;
+        if (event === "PASSWORD_RECOVERY") {
+          recoveryMode = true;
+          setMode("login");
+          document.querySelector("#title").textContent = "Defina uma nova senha.";
+          document.querySelector("#subtitle").textContent = "Escolha uma nova senha para sua conta RangelLab.";
+          passwordInput.autocomplete = "new-password";
+          submit.textContent = "Atualizar senha";
+          forgot.hidden = true;
+          showMessage("Link de recuperação validado. Defina uma senha nova.");
+        }
+      });
+      supabase.auth.getSession().then(({ data }) => { if (data.session) logout.hidden = false; });
+    } else {
+      showMessage("A tela já está preparada, mas falta inserir a chave publishable/anon pública do Supabase em auth-config.js para habilitar o login.", "error");
+    }
+    if (new URLSearchParams(location.search).get("mode") === "signup") setMode("signup");
+    if (new URLSearchParams(location.search).has("reset")) {
+      showMessage("Abra o link de recuperação enviado por e-mail nesta página para definir sua nova senha.");
+    }
+  </script>
+</body>
+</html>

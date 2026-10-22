@@ -1,0 +1,15 @@
+{
+  "id": "/",
+  "name": "RangelLab",
+  "short_name": "RangelLab",
+  "description": "Seus produtos digitais, em um só lugar.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08111d",
+  "theme_color": "#08111d",
+  "icons": [
+    {"src": "/icon.svg?v=2", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
+    {"src": "/icon.svg?v=2", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable"}
+  ]
+}
