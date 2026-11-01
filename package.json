@@ -1,0 +1,14 @@
+{
+  "name": "jslynk-portal",
+  "version": "1.0.38",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun scripts/dev.mjs",
+    "version:patch": "node scripts/bump-version.mjs patch",
+    "version:minor": "node scripts/bump-version.mjs minor",
+    "version:major": "node scripts/bump-version.mjs major",
+    "version:check": "node scripts/bump-version.mjs check",
+    "test": "node --test scripts/*.test.mjs"
+  }
+}
