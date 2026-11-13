@@ -1,0 +1,17 @@
+{
+  "name": "boran-studio-portal",
+  "version": "1.2.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "start": "node scripts/dev.mjs",
+    "build": "node scripts/bump-version.mjs check",
+    "lint": "node --check scripts/dev.mjs && node --check scripts/bump-version.mjs && node --check scripts/bump-version.test.mjs",
+    "version:patch": "node scripts/bump-version.mjs patch",
+    "version:minor": "node scripts/bump-version.mjs minor",
+    "version:major": "node scripts/bump-version.mjs major",
+    "version:check": "node scripts/bump-version.mjs check",
+    "test": "node --test scripts/*.test.mjs"
+  }
+}
