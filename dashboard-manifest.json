@@ -1,0 +1,20 @@
+{
+  "id": "/dashboard.html",
+  "name": "BoRan Studio — Dashboard",
+  "short_name": "B&R Dashboard",
+  "description": "Console administrativo do BoRan Studio.",
+  "start_url": "/dashboard.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#08111d",
+  "theme_color": "#08111d",
+  "icons": [
+    {
+      "src": "/dashboard-icon.svg?v=1",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

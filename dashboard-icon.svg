@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title id="title">B&amp;R Dashboard</title><desc id="desc">Monograma Borges e Rangel em prata com acento azul elétrico.</desc>
+<defs>
+ <linearGradient id="bg" x1="42" y1="24" x2="468" y2="488" gradientUnits="userSpaceOnUse"><stop stop-color="#102b58"/><stop offset=".48" stop-color="#06152d"/><stop offset="1" stop-color="#020711"/></linearGradient>
+ <linearGradient id="rim" x1="56" y1="40" x2="452" y2="470" gradientUnits="userSpaceOnUse"><stop stop-color="#007bff"/><stop offset=".48" stop-color="#00d5ff"/><stop offset="1" stop-color="#0753dc"/></linearGradient>
+ <linearGradient id="silver" x1="154" y1="170" x2="365" y2="360" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset=".45" stop-color="#b8c9df"/><stop offset="1" stop-color="#edf5ff"/></linearGradient>
+ <linearGradient id="blue" x1="170" y1="350" x2="347" y2="180" gradientUnits="userSpaceOnUse"><stop stop-color="#0056ff"/><stop offset=".55" stop-color="#00caff"/><stop offset="1" stop-color="#0875ff"/></linearGradient>
+ <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+</defs>
+<rect width="512" height="512" rx="112" fill="url(#bg)"/>
+<rect x="18" y="18" width="476" height="476" rx="96" fill="none" stroke="url(#rim)" stroke-width="7"/>
+<circle cx="256" cy="256" r="176" fill="none" stroke="#087cff" stroke-width="15" opacity=".18" filter="url(#glow)"/>
+<circle cx="256" cy="256" r="176" fill="none" stroke="url(#rim)" stroke-width="8" opacity=".9"/>
+<g transform="translate(-42 -34)">
+<path d="M108 158h125c53 0 83 27 83 70 0 31-18 53-47 63 37 8 58 32 58 67 0 48-36 78-93 78H108V158Zm70 58v53h49c18 0 28-10 28-27 0-16-10-26-28-26h-49Zm0 106v57h58c20 0 31-10 31-29 0-18-11-28-31-28h-58Z" fill="url(#silver)"/>
+<path d="M300 158h93c59 0 96 31 96 81 0 36-18 62-50 74l60 123h-78l-52-110h-27v110h-70V158Zm70 59v54h20c19 0 29-9 29-27 0-18-10-27-29-27h-20Z" fill="url(#silver)"/>
+<path d="m160 372 58-62h55l81-87h78L281 389H160Z" fill="url(#blue)" stroke="#12cfff" stroke-width="3" stroke-linejoin="round"/>
+</g>
+</svg>
